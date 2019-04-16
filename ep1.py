@@ -59,8 +59,10 @@ def main():
     while not game_over:
         cenario_atual = cenarios[nome_cenario_atual]
 
-        # Aluno A: substitua este comentário pelo código para imprimir 
-        # o cenário atual.TESTE_SPYDER
+        titulo1 = "Cena1: Primeiro contato"
+        print (titulo1)
+        comprimento1 = len(titulo1)
+        print (comprimento1*"-")
 
         opcoes = cenario_atual['opcoes']
         if len(opcoes) == 0:
