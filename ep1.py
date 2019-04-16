@@ -60,7 +60,7 @@ def main():
         cenario_atual = cenarios[nome_cenario_atual]
 
         # Aluno A: substitua este comentário pelo código para imprimir 
-        # o cenário atual.TESTE
+        # o cenário atual.TESTE_SPYDER
 
         opcoes = cenario_atual['opcoes']
         if len(opcoes) == 0:
