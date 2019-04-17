@@ -11,7 +11,8 @@ def carregar_cenarios():
             "descricao": "Voce esta no saguao de entrada do insper",
             "opcoes": {
                 "andar professor": "Tomar o elevador para o andar do professor",
-                "biblioteca": "Ir para a biblioteca"
+                "biblioteca": "Ir para a biblioteca",
+                "sala das entidades": "Ir para a sala das entidades"
             }
         },
         "andar professor": {
@@ -33,8 +34,34 @@ def carregar_cenarios():
             "titulo": "Caverna da tranquilidade",
             "descricao": "Voce esta na biblioteca",
             "opcoes": {
-                "inicio": "Voltar para o saguao de entrada"
-            }
+                "inicio": "Voltar para o saguao de entrada",
+                "mario kart": "Ir jogar mario kart com seus amigos",
+                "pizzada": "Ir aproveitar a pizzada com a galera"
+            },
+        },
+        "mario kart": {
+            "titulo": "Cantinho das Corridas",
+            "descricao": "Você está no 4° Andar jogando Mario Kart com seus amigos",
+            "opcoes": {
+                "biblioteca": "Voltar para a biblioteca",
+                "professor": "Falar com o professor que está na sala ao lado"
+            },
+        },
+        "pizzada": {
+            "titulo": "Pizzinha amô",
+            "descricao": "Voce esta na pizzada com seus amigos de engenharia!",
+            "opcoes": {
+                "biblioteca": "Ir tentar fazer o EP na biblioteca",
+                "andar professor": "Ir até a sala do professor para conversar com ele"
+            },
+        },
+        "sala das entidades": {
+            "titulo": "Sofazin delicin",
+            "descricao": "Voce esta na sala das entidades no 5° Andar",
+            "opcoes": {
+                "biblioteca": "Ir tentar fazer o EP na biblioteca",
+                "andar professor": "Ir até a sala do professor para conversar com ele"
+            },
         }
     }
     nome_cenario_atual = "inicio"
@@ -48,9 +75,9 @@ def main():
     print("Parecia uma boa idéia: vou só jogar um pouquinho/assistir Netflix/"
         "embaçar em geral. Amanhã eu começo o EP. Mas isso não deu certo...")
     print()
-    print("É o dia de entregar o EP e você está muuuuito atrasado! Você está "
+    print("Amanha é o dia de entregar o EP e você está razoavelmente muito atrasado! Você está "
         "na entrada do Insper, e quer procurar o professor para pedir um "
-        "adiamento do EP (boa sorte...)")
+        "adiamento do EP para a próxima semana (boa sorte...)")
     print()
 
     cenarios, nome_cenario_atual = carregar_cenarios()
