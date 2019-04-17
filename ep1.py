@@ -6,21 +6,39 @@
 
 def carregar_cenarios():
     cenarios = {
-        "inicio": {
+        "casa": {
+            "titulo": "Casa",
+            "descricao": "Voce esta em casa",
+            "opcoes": {
+                "inspao": "Ir para o Inspao",
+                "cafe": "ir tomar cafe da manha"
+            }
+        },
+        "cafe": {
+            "titulo": "Acoooorda seu sonolento",
+            "descricao": "Voce esta tomando cafe da manha perto do insper",
+            "opcoes": {
+                "casa": "voltar para casa",
+                "inspao": "ir para o insper"
+            }
+        },
+        "inspao": {
             "titulo": "Saguao do perigo",
             "descricao": "Voce esta no saguao de entrada do insper",
             "opcoes": {
-                "andar professor": "Tomar o elevador para o andar do professor",
+                "4 andar": "Tomar o elevador para o 4° andar",
                 "biblioteca": "Ir para a biblioteca",
-                "sala das entidades": "Ir para a sala das entidades"
+                "entidades": "Ir para a sala das entidades"
             }
         },
-        "andar professor": {
+        "4 andar": {
             "titulo": "Andar do desespero",
-            "descricao": "Voce chegou ao andar da sala do seu professor",
+            "descricao": "Voce chegou ao andar do melhor curso do insper",
             "opcoes": {
-                "inicio": "Tomar o elevador para o saguao de entrada",
-                "professor": "Falar com o professor"
+                "mario kart": "Ir jogar mario kart com a galera",
+                "professor": "Falar com o professor",
+                "pizzada": "Ir para a pizzada comer muito e entrosar",
+                "inspao": "Voltar para o saguão de entrada do Insper"
             }
         },
         "professor": {
@@ -34,17 +52,19 @@ def carregar_cenarios():
             "titulo": "Caverna da tranquilidade",
             "descricao": "Voce esta na biblioteca",
             "opcoes": {
-                "inicio": "Voltar para o saguao de entrada",
-                "mario kart": "Ir jogar mario kart com seus amigos",
-                "pizzada": "Ir aproveitar a pizzada com a galera"
+                "inspao": "Voltar para o saguao de entrada",
+                "4 andar": "Ir para o quarto andar",
+                "entidades": "Ir para a sala das entidades",
+                "livro":"ir procurar um livro sobre programação"
             },
         },
         "mario kart": {
             "titulo": "Cantinho das Corridas",
             "descricao": "Você está no 4° Andar jogando Mario Kart com seus amigos",
             "opcoes": {
-                "biblioteca": "Voltar para a biblioteca",
-                "professor": "Falar com o professor que está na sala ao lado"
+                "4 andar": "Voltar para a entrada do 4° andar",
+                "professor": "Falar com o professor que está na sala ao lado",
+                "jogar": "jogar uma partida de mario kart"
             },
         },
         "pizzada": {
@@ -52,19 +72,20 @@ def carregar_cenarios():
             "descricao": "Voce esta na pizzada com seus amigos de engenharia!",
             "opcoes": {
                 "biblioteca": "Ir tentar fazer o EP na biblioteca",
-                "andar professor": "Ir até a sala do professor para conversar com ele"
+                "4 andar": "Ir até a sala do professor para conversar com ele"
             },
         },
-        "sala das entidades": {
+        "entidades": {
             "titulo": "Sofazin delicin",
             "descricao": "Voce esta na sala das entidades no 5° Andar",
             "opcoes": {
-                "biblioteca": "Ir tentar fazer o EP na biblioteca",
-                "andar professor": "Ir até a sala do professor para conversar com ele"
+                "veterano": "Ir reclamar do barulho que o veterano esta fazendo",
+                "4 andar": "Voltar para o 4° andar",
+                "inspao": "Ir para o salão de entrada do insper"
             },
         }
     }
-    nome_cenario_atual = "inicio"
+    nome_cenario_atual = "casa"
     return cenarios, nome_cenario_atual
 
 
