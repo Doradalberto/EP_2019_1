@@ -55,7 +55,7 @@ def carregar_cenarios():
                 "inspao": "Voltar para o saguao de entrada",
                 "4 andar": "Ir para o quarto andar",
                 "entidades": "Ir para a sala das entidades",
-                "livro":"ir procurar um livro sobre programação"
+                "livro":"ir procurar um livro sobre programacao"
             },
         },
         "mario kart": {
@@ -63,12 +63,12 @@ def carregar_cenarios():
             "descricao": "Você está no 4° Andar jogando Mario Kart com seus amigos",
             "opcoes": {
                 "4 andar": "Voltar para a entrada do 4° andar",
-                "professor": "Falar com o professor que está na sala ao lado",
+                "professor": "Falar com o professor que esta na sala ao lado",
                 "jogar": "jogar uma partida de mario kart"
             },
         },
         "pizzada": {
-            "titulo": "Pizzinha amô",
+            "titulo": "Pizzinha",
             "descricao": "Voce esta na pizzada com seus amigos de engenharia!",
             "opcoes": {
                 "biblioteca": "Ir tentar fazer o EP na biblioteca",
@@ -81,7 +81,16 @@ def carregar_cenarios():
             "opcoes": {
                 "veterano": "Ir reclamar do barulho que o veterano esta fazendo",
                 "4 andar": "Voltar para o 4° andar",
-                "inspao": "Ir para o salão de entrada do insper"
+                "inspao": "Ir para o saguao de entrada do insper"
+            },
+        },
+        "elevador": {
+            "titulo": "Quadrado sobe desce",
+            "descricao": "O elevador pode te levar para qualquer lugar que voce quiser!",
+            "opcoes": {
+                #lugar = input("Onde você quer ir?")
+                #if lugar == IMPLEMENTAR CODIGO PARA LEVAR PARA A SALA QUE ELE CHAMAR O NOME, 
+                #SE ELA NAO EXISTIR ESCREVER "TENTE OUTRO LUGAR!"
             },
         }
     }
