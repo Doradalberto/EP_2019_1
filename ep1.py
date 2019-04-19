@@ -128,9 +128,12 @@ def main():
             print("Acabaram-se suas opções! Mwo mwo mwooooo...")
             game_over = True
         else:
-#codigo_c_c
-            # Aluno B: substitua este comentário e a linha abaixo pelo código
-            # para pedir a escolha do usuário.
+
+            print ("Opcoes disponiveis:")
+            for x, y in opcoes.items():
+                print ("{0}:{1}".format(x, y))
+            
+            escolha = input("O que você irá escolher?")
             escolha = ""
 
             if escolha in opcoes:
