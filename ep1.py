@@ -5,8 +5,7 @@
 # - aluno B: Gabriel Lorenzo Chinelatto, gabriellcc@al.insper.edu.br
 
 import random
-inventario = [0]*3
-inventario[0]= 'chapeu'
+inventario = []
 
 #colocar um jogo num while, para ele poder jogar só 3 vezes, caso o contrario é jubilado :)
 
@@ -178,10 +177,13 @@ def main():
                 nome_cenario_atual = escolha
             elif escolha =='elevador':
                 nome_cenario_atual = escolha
-            elif escolha == 'pegar':
+            elif escolha == "pegar":
                 inventario.append("livro")
-                nome_cenario_atual = 'biblioteca'
+                nome_cenario_atual = "biblioteca"
 #apagar o livro do dicionario
+                
+#aparição de monstros - G A L O 
+                
             elif escolha == 'aceitar':
                 vida_veterano = 100
                 vida_aluno = 100 #se ele ja tiver ganhado vidas durante o jogo, colocar aqui o valor, caso contrario, 0
@@ -200,7 +202,7 @@ def main():
                 else:
                     print("Voce perdeu")
                     nome_cenario_atual = 'entidades'
-                    
+#while limite tentativas de jogo (x3)
             elif escolha == "jogar":
                 x = random.randint(1,12)
                 if x == 1:
