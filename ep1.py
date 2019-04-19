@@ -98,6 +98,7 @@ def carregar_cenarios():
     return cenarios, nome_cenario_atual
 
 
+
 def main():
     print("Na hora do sufoco!")
     print("------------------")
@@ -109,6 +110,7 @@ def main():
         "na entrada do Insper, e quer procurar o professor para pedir um "
         "adiamento do EP para a próxima semana (boa sorte...)")
     print()
+
 
     cenarios, nome_cenario_atual = carregar_cenarios()
 
@@ -130,12 +132,14 @@ def main():
         else:
 
             print ("Opcoes disponiveis:")
-            for x, y in opcoes.items():
+            for x, y in opcoes.items():                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             
                 print ("{0}:{1}".format(x, y))
             
             escolha = input("O que você irá escolher?")
             
             if escolha in opcoes:
+                nome_cenario_atual = escolha
+            elif escolha =='elevador':
                 nome_cenario_atual = escolha
             else:
                 print("Sua indecisão foi sua ruína!") 
