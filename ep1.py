@@ -38,7 +38,8 @@ def carregar_cenarios():
                 "mario kart": "Ir jogar mario kart com a galera",
                 "professor": "Falar com o professor",
                 "pizzada": "Ir para a pizzada comer muito e entrosar",
-                "inspao": "Voltar para o saguão de entrada do Insper"
+                "inspao": "Voltar para o saguão de entrada do Insper",
+                "elevador":"pegar o elevador para ir pra onde quiser"
             }
         },
         "professor": {
@@ -102,7 +103,7 @@ def main():
     print("Na hora do sufoco!")
     print("------------------")
     print()
-    print("Parecia uma boa idéia: vou só jogar um pouquinho/assistir Netflix/"
+    print("Eis que você deixa o Ep de lado: vou só jogar um pouquinho/assistir Netflix/"
         "embaçar em geral. Amanhã eu começo o EP. Mas isso não deu certo...")
     print()
     print("Amanha é o dia de entregar o EP e você está razoavelmente muito atrasado! Você está "
