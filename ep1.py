@@ -134,12 +134,11 @@ def main():
                 print ("{0}:{1}".format(x, y))
             
             escolha = input("O que você irá escolher?")
-            escolha = ""
-
+            
             if escolha in opcoes:
                 nome_cenario_atual = escolha
             else:
-                print("Sua indecisão foi sua ruína!")
+                print("Sua indecisão foi sua ruína!") 
                 game_over = True
 
     print("Você morreu!")
