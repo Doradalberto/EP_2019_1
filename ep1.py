@@ -8,6 +8,8 @@ import random
 inventario = [0]*3
 inventario[0]= 'chapeu'
 
+#colocar um jogo num while, para ele poder jogar só 3 vezes, caso o contrario é jubilado :)
+
 def carregar_cenarios():
     cenarios = {
         "casa": {
@@ -32,7 +34,8 @@ def carregar_cenarios():
             "opcoes": {
                 "4 andar": "Tomar o elevador para o 4° andar",
                 "biblioteca": "Ir para a biblioteca",
-                "entidades": "Ir para a sala das entidades"
+                "entidades": "Ir para a sala das entidades",
+                "elevador": "Pegar o elevador para ir onde quiser"
             }
         },
         "4 andar": {
@@ -42,6 +45,9 @@ def carregar_cenarios():
                 "mario kart": "Ir jogar mario kart com a galera",
                 "professor": "Falar com o professor",
                 "pizzada": "Ir para a pizzada comer muito e entrosar",
+                #rever a existencia da pizzada no dicionario
+                    #if ingresso not in inventario
+                    # tirar o pizzada das opcoes
                 "inspao": "Voltar para o saguão de entrada do Insper",
                 "elevador":"pegar o elevador para ir pra onde quiser"
             }
@@ -63,6 +69,15 @@ def carregar_cenarios():
                 "livro":"ir procurar um livro sobre programacao"
             },
         },
+        "livro": {
+            "titulo": "Esperteza pra quem sabe",
+            "descricao": "Você foi esperto e encontrou um livro com anotações que irão te salvar!",
+            "opcoes": {
+                "pegar": "alugar o livro",
+                "deixar": "não pegar o livro"
+                #inventario.append
+            },
+        },
         "mario kart": {
             "titulo": "Cantinho das Corridas",
             "descricao": "Você está no 4° Andar jogando Mario Kart com seus amigos",
@@ -78,6 +93,8 @@ def carregar_cenarios():
             "opcoes": {
                 "biblioteca": "Ir tentar fazer o EP na biblioteca",
                 "4 andar": "Ir até a sala do professor para conversar com ele"
+                #so consegue acessar se na lista tiver o ingresso (if opções pizzada...)
+                #se n tiver o ingresso volta 4 andar
             },
         },
         "entidades": {
@@ -87,6 +104,18 @@ def carregar_cenarios():
                 "veterano": "Ir reclamar do barulho que o veterano esta fazendo",
                 "4 andar": "Voltar para o 4° andar",
                 "inspao": "Ir para o saguao de entrada do insper"
+            },
+        },
+        "veterano": {
+            "titulo": "Desafio",
+            "descricao": "Voce esta na sala das entidades no 5° Andar, e um veterano esta fazedo muito barulho, ele aposta com voce um ingresso da pizzada que consegue te vencer num combate",
+            "opcoes": {
+                "aceitar": "Aceitar o combate",
+                "recusar": "Ta com medo?",
+                "brigar": "Não aceitar a aposta e resolver na mão"
+                #brigar print: voce teve que passar um dia no hospital e perdeu o prazo do EP > perde
+                #programa do combate quando aceitar
+                #recusar: voltar pra sala das entidades
             },
         },
         "elevador": {
@@ -101,7 +130,6 @@ def carregar_cenarios():
     }
     nome_cenario_atual = "casa"
     return cenarios, nome_cenario_atual
-
 
 
 def main():
@@ -140,18 +168,44 @@ def main():
             print ("Opcoes disponiveis:")
             for x, y in opcoes.items():                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             
                 print ("{0}:{1}".format(x, y))
+                #se o lugar for o elevador, não printar as opções
             
             escolha = input("O que você irá escolher?")
-            
+ #problema acessar de qualquer lugar
+ #criar sala secreta
+           
             if escolha in opcoes:
                 nome_cenario_atual = escolha
             elif escolha =='elevador':
                 nome_cenario_atual = escolha
+            elif escolha == 'pegar':
+                inventario.append("livro")
+                nome_cenario_atual = 'biblioteca'
+#apagar o livro do dicionario
+            elif escolha == 'aceitar':
+                vida_veterano = 100
+                vida_aluno = 100 #se ele ja tiver ganhado vidas durante o jogo, colocar aqui o valor, caso contrario, 0
+
+                while vida_veterano or vida_aluno > 0:
+                    x = random.randint(1,2)
+                    if x == 1:
+                        vida_veterano -= 50
+                    else:
+                        vida_aluno -= 50 
+                if vida_aluno > vida_veterano:
+                    print("Voce ganhou!")
+                    print("Novo item adquirido no inventario")
+                    inventario.append("Ingresso")
+                    nome_cenario_atual = 'entidades'
+                else:
+                    print("Voce perdeu")
+                    nome_cenario_atual = 'entidades'
+                    
             elif escolha == "jogar":
                 x = random.randint(1,12)
                 if x == 1:
                     print ("Parabens! Você conseguiu ficar em 1° lugar e por isso ganhou um prêmio!")
-                    print ("Verifique seu inventário")
+                    print("Novo item adquirido no inventario")
                     inventario.append("Computador para programar")
                     nome_cenario_atual = "mario kart"
                 elif x == 12:
