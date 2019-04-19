@@ -4,14 +4,15 @@
 # - aluno A: Isadora Stigliani Dalberto, isadorasd@al.insper.edu.br
 # - aluno B: Gabriel Lorenzo Chinelatto, gabriellcc@al.insper.edu.br
 
-inventario = []
+import random
+inventario = [0]*3
+inventario[0]= 'chapeu'
 
 def carregar_cenarios():
     cenarios = {
         "casa": {
             "titulo": "Casa",
             "descricao": "Voce esta em casa",
-            "inventario": print(inventario),
             "opcoes": {
                 "inspao": "Ir para o Inspao",
                 "cafe": "ir tomar cafe da manha"
@@ -20,7 +21,6 @@ def carregar_cenarios():
         "cafe": {
             "titulo": "Acoooorda seu sonolento",
             "descricao": "Voce esta tomando cafe da manha perto do insper",
-            "inventario": print(inventario),
             "opcoes": {
                 "casa": "voltar para casa",
                 "inspao": "ir para o insper"
@@ -29,7 +29,6 @@ def carregar_cenarios():
         "inspao": {
             "titulo": "Saguao do perigo",
             "descricao": "Voce esta no saguao de entrada do insper",
-            "inventario": print(inventario),
             "opcoes": {
                 "4 andar": "Tomar o elevador para o 4° andar",
                 "biblioteca": "Ir para a biblioteca",
@@ -39,7 +38,6 @@ def carregar_cenarios():
         "4 andar": {
             "titulo": "Andar do desespero",
             "descricao": "Voce chegou ao andar do melhor curso do insper",
-            "inventario": print(inventario),
             "opcoes": {
                 "mario kart": "Ir jogar mario kart com a galera",
                 "professor": "Falar com o professor",
@@ -58,7 +56,6 @@ def carregar_cenarios():
         "biblioteca": {
             "titulo": "Caverna da tranquilidade",
             "descricao": "Voce esta na biblioteca",
-            "inventario": print(inventario),
             "opcoes": {
                 "inspao": "Voltar para o saguao de entrada",
                 "4 andar": "Ir para o quarto andar",
@@ -69,7 +66,6 @@ def carregar_cenarios():
         "mario kart": {
             "titulo": "Cantinho das Corridas",
             "descricao": "Você está no 4° Andar jogando Mario Kart com seus amigos",
-            "inventario": print(inventario),
             "opcoes": {
                 "4 andar": "Voltar para a entrada do 4° andar",
                 "professor": "Falar com o professor que esta na sala ao lado",
@@ -79,7 +75,6 @@ def carregar_cenarios():
         "pizzada": {
             "titulo": "Pizzinha",
             "descricao": "Voce esta na pizzada com seus amigos de engenharia!",
-            "inventario": print(inventario),
             "opcoes": {
                 "biblioteca": "Ir tentar fazer o EP na biblioteca",
                 "4 andar": "Ir até a sala do professor para conversar com ele"
@@ -88,7 +83,6 @@ def carregar_cenarios():
         "entidades": {
             "titulo": "Sofazin delicin",
             "descricao": "Voce esta na sala das entidades no 5° Andar",
-            "inventario" : print(inventario),
             "opcoes": {
                 "veterano": "Ir reclamar do barulho que o veterano esta fazendo",
                 "4 andar": "Voltar para o 4° andar",
@@ -134,7 +128,7 @@ def main():
         comprimento1 = len(cenario_atual["titulo"])
         print (comprimento1*"-")
         print (cenario_atual["descricao"])
-        print (cenario_atual["inventario"])
+        print ("O seu inventario é: {0}".format(inventario))
         print()
 
         opcoes = cenario_atual['opcoes']
@@ -153,6 +147,19 @@ def main():
                 nome_cenario_atual = escolha
             elif escolha =='elevador':
                 nome_cenario_atual = escolha
+            elif escolha == "jogar":
+                x = random.randint(1,12)
+                if x == 1:
+                    print ("Parabens! Você conseguiu ficar em 1° lugar e por isso ganhou um prêmio!")
+                    print ("Verifique seu inventário")
+                    inventario.append("Computador para programar")
+                    nome_cenario_atual = "mario kart"
+                elif x == 12:
+                    print ("Você ficou em último, desistiu do EP e foi pra casa chorar")
+                    game_over = True
+                else: 
+                    print ("bom jogo! que pena que não conseguiu ficar em 1° dessa vez!")
+                    nome_cenario_atual = "mario kart"                    
             else:
                 print("Sua indecisão foi sua ruína!") 
                 game_over = True
