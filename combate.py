@@ -5,7 +5,9 @@ Created on Fri Apr 19 19:09:52 2019
 @author: dorad
 """
 inventario = []
+
 #Combate
+
 vida_veterano = 100
 vida_aluno = 100 #se ele ja tiver ganhado vidas durante o jogo, colocar aqui o valor, caso contrario, 0
 
@@ -23,3 +25,5 @@ if vida_aluno > vida_veterano:
     #voltar para 
 else:
     print("Voce perdeu")
+
+#ERRO: QUANDO GANHA NÃO TA TENDO RESPOSTA
