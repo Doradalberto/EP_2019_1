@@ -66,6 +66,7 @@ def carregar_cenarios():
                 "4 andar": "Ir para o quarto andar",
                 "entidades": "Ir para a sala das entidades",
                 "livro":"ir procurar um livro sobre programacao"
+#fazer com que o livro apareça em 2/3 das vezes
             },
         },
         "livro": {
@@ -180,11 +181,14 @@ def main():
             elif escolha == "pegar":
                 inventario.append("livro")
                 nome_cenario_atual = "biblioteca"
+            elif escolha == "deixar":
+                nome_cenario_atual = "biblioteca"
 #apagar o livro do dicionario
                 
 #aparição de monstros - G A L O 
                 
             elif escolha == 'aceitar':
+#ELE NAO TA ACONTECENDO NADA QUANDO ESCOLHEMOS ESSA OPÇÃO
                 vida_veterano = 100
                 vida_aluno = 100 #se ele ja tiver ganhado vidas durante o jogo, colocar aqui o valor, caso contrario, 0
 
