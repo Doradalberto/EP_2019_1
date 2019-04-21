@@ -152,6 +152,10 @@ def main():
         cenario_atual = cenarios[nome_cenario_atual]
 
         print()
+        print()
+        print()
+        print()
+        print()
         print (cenario_atual["titulo"])
         comprimento1 = len(cenario_atual["titulo"])
         print (comprimento1*"-")
