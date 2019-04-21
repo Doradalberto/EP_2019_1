@@ -51,6 +51,11 @@ def carregar_cenarios():
                 "elevador":"pegar o elevador para ir pra onde quiser"
             }
         },
+        "brigar": {
+            "titulo": "Bad choice my friend",
+            "descricao": "Voce Brigou com o veterano e foi parar no hospital, por isso perdeu o prazo de entrega do ep",
+            "opcoes": {}
+        },
         "professor": {
             "titulo": "O monstro do Python",
             "descricao": "Voce foi pedir para o professor adiar o EP. "
@@ -126,6 +131,21 @@ def carregar_cenarios():
                 #if lugar == IMPLEMENTAR CODIGO PARA LEVAR PARA A SALA QUE ELE CHAMAR O NOME, 
                 #SE ELA NAO EXISTIR ESCREVER "TENTE OUTRO LUGAR!"
             },
+        },
+        "pegar": {
+            "titulo": "",
+            "descricao": "",
+            "opcoes": {
+                "opcao1": "seila",
+            },
+        },
+        "titulo": {
+            "titulo": "Quadrado sobe desce",
+            "descricao": "O elevador pode te levar para qualquer lugar que voce quiser!",
+            "opcoes": {
+                "opcao1": "descrição",
+                "opcao2": "descircao 2",
+            },
         }
     }
     nome_cenario_atual = "casa"
@@ -133,6 +153,16 @@ def carregar_cenarios():
 
 
 def main():
+    print()
+    print()
+    instruções = "Instruções do jogo:"
+    print(instruções)
+    print(len(instruções)*"-")
+    print("O jogo é feito de escolhas, que serão fetas por você!")
+    print("Para fazer uma escolha, digite uma das opções disponíveis")
+    print("Cuidado! não dê espaços e escreva a palavra exatamente igual como ela se encontra antes do : nas opções disponíveis")
+    print()
+    print()
     print("Na hora do sufoco!")
     print("------------------")
     print()
@@ -151,8 +181,6 @@ def main():
     while not game_over:
         cenario_atual = cenarios[nome_cenario_atual]
 
-        print()
-        print()
         print()
         print()
         print()
@@ -183,8 +211,13 @@ def main():
             elif escolha =='elevador':
                 nome_cenario_atual = escolha
             elif escolha == "pegar":
-                inventario.append("livro")
-                nome_cenario_atual = "biblioteca"
+                book = random.randint(1,3)
+                if book == 1 or 2:
+                    inventario.append("livro")
+                    nome_cenario_atual = "biblioteca"
+                else:
+                    print("você não encontrou nada!")
+                    nome_cenario_atual = "biblioteca",
             elif escolha == "deixar":
                 nome_cenario_atual = "biblioteca"
 #apagar o livro do dicionario
@@ -210,6 +243,7 @@ def main():
                 else:
                     print("Voce perdeu")
                     nome_cenario_atual = 'entidades'
+                    
 #while limite tentativas de jogo (x3)
             elif escolha == "jogar":
                 x = random.randint(1,12)
@@ -223,7 +257,8 @@ def main():
                     game_over = True
                 else: 
                     print ("bom jogo! que pena que não conseguiu ficar em 1° dessa vez!")
-                    nome_cenario_atual = "mario kart"                    
+                    nome_cenario_atual = "mario kart" 
+                    
             else:
                 print("Sua indecisão foi sua ruína!") 
                 game_over = True
