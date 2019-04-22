@@ -5,13 +5,13 @@
 # - aluno B: Gabriel Lorenzo Chinelatto, gabriellcc@al.insper.edu.br
 
 import random
-<<<<<<< HEAD
-inventario = [0]*3
-=======
+
+caf=[]
+
 inventario = []
-vida = 100
+
 #colocar um jogo num while, para ele poder jogar só 3 vezes, caso o contrario é jubilado :)
->>>>>>> 2ebac39b2e6e4c434c5ac33c563bb5d00130fbd3
+
 
 def carregar_cenarios():
     cenarios = {
@@ -226,8 +226,8 @@ def main():
         
             
         if nome_cenario_atual == "cafe":
-            vida = 200
-            
+            cafe = 100
+            caf.append('cc')
             print("Por decidir ser uma pessoa correta e não pular o café da manha, você conseguiu +100 de vida!")
             print()
             
@@ -275,13 +275,18 @@ def main():
         if nome_cenario_atual == 'aceitar':
 #ELE NAO TA ACONTECENDO NADA QUANDO ESCOLHEMOS ESSA OPÇÃO
             vida_veterano = 100
-            
-            vida_aluno= vida
-            while vida_veterano or vida_aluno > 0:
+            if 'cc' in caf:
+                vida_aluno =100 + cafe
+            else:
+                vida_aluno = 100
+            while vida_veterano and vida_aluno > 0:
                 x = random.randint(1,2)
                 if x == 1:
-                    vida_veterano -= 51
-                    vida_aluno -= 51 
+            
+                    vida_veterano -= 50
+                else:
+                    
+                    vida_aluno -= 50
             if vida_aluno > vida_veterano:
                 print("Voce ganhou!")
                 print("Novo item adquirido no inventario")
@@ -301,14 +306,16 @@ def main():
             elif x == 12:
                 print ("Você ficou em último, desistiu do EP e foi pra casa chorar")
                 game_over = True
+            elif x==11:
+                print('voce quase perdeu, cuidado!')
             else: 
                 print ("bom jogo! que pena que não conseguiu ficar em 1° dessa vez!")
             
                     
 
     
-        if len(opcoes) == 0:
-            print("Acabaram-se suas opções! Mwo mwo mwooooo...")
+        if len(opcoes) == 0 :
+            print("Acabaram-se suas opções! Mwo mwo mwooooo0...")
             game_over = True
         else:
             print ("Opcoes disponiveis:")
@@ -319,7 +326,7 @@ def main():
         
             if escolha in opcoes:
                 nome_cenario_atual = escolha
-<<<<<<< HEAD
+
             elif escolha =='elevador':
                 nome_cenario_atual = escolha
             elif escolha == "jogar":
@@ -335,9 +342,8 @@ def main():
                 else: 
                     print ("bom jogo! que pena que não conseguiu ficar em 1° dessa vez!")
                     nome_cenario_atual = "mario kart"                    
-=======
 
->>>>>>> 2ebac39b2e6e4c434c5ac33c563bb5d00130fbd3
+
             else:
                 print("Sua indecisão foi sua ruína!") 
                 game_over = True
