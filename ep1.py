@@ -34,7 +34,8 @@ def carregar_cenarios():
                 "4 andar": "Tomar o elevador para o 4° andar",
                 "biblioteca": "Ir para a biblioteca",
                 "entidades": "Ir para a sala das entidades",
-                "elevador": "Pegar o elevador para ir onde quiser"
+                "elevador": "Pegar o elevador para ir onde quiser",
+                "cafe": "sair pra tomar um café"
             }
         },
         "4 andar": {
@@ -51,11 +52,6 @@ def carregar_cenarios():
                 "elevador":"pegar o elevador para ir pra onde quiser"
             }
         },
-        "brigar": {
-            "titulo": "Bad choice my friend",
-            "descricao": "Voce Brigou com o veterano e foi parar no hospital, por isso perdeu o prazo de entrega do ep",
-            "opcoes": {}
-        },
         "professor": {
             "titulo": "O monstro do Python",
             "descricao": "Voce foi pedir para o professor adiar o EP. "
@@ -71,16 +67,13 @@ def carregar_cenarios():
                 "4 andar": "Ir para o quarto andar",
                 "entidades": "Ir para a sala das entidades",
                 "livro":"ir procurar um livro sobre programacao"
-#fazer com que o livro apareça em 2/3 das vezes
             },
         },
         "livro": {
             "titulo": "Esperteza pra quem sabe",
-            "descricao": "Você foi esperto e encontrou um livro com anotações que irão te salvar!",
+            "descricao": "",
             "opcoes": {
-                "pegar": "alugar o livro",
-                "deixar": "não pegar o livro"
-                #inventario.append
+                "biblioteca": "Voltar para a biblioteca",
             },
         },
         "mario kart": {
@@ -97,10 +90,19 @@ def carregar_cenarios():
             "descricao": "Voce esta na pizzada com seus amigos de engenharia!",
             "opcoes": {
                 "biblioteca": "Ir tentar fazer o EP na biblioteca",
-                "4 andar": "Ir até a sala do professor para conversar com ele"
+                "4 andar": "Ir até a sala do professor para conversar com ele",
+                "ajudar": "ajudar colega que está com dificuldades no EP"
                 #so consegue acessar se na lista tiver o ingresso (if opções pizzada...)
                 #se n tiver o ingresso volta 4 andar
             },
+        },
+        "ajudar": {
+            "titulo": "Alma caridosa",
+            "descricao": "Por ajudar seu amigo, você conseguiu +50 de vida!",
+            "opcoes": {
+                "4 andar": "Voltar para o 4° andar",
+            },
+
         },
         "entidades": {
             "titulo": "Sofazin delicin",
@@ -111,6 +113,11 @@ def carregar_cenarios():
                 "inspao": "Ir para o saguao de entrada do insper"
             },
         },
+        "brigar": {
+            "titulo": "Bad choice my friend",
+            "descricao": "Voce Brigou com o veterano e foi parar no hospital, por isso perdeu o prazo de entrega do ep",
+            "opcoes": {}
+        },
         "veterano": {
             "titulo": "Desafio",
             "descricao": "Voce esta na sala das entidades no 5° Andar, e um veterano esta fazedo muito barulho, ele aposta com voce um ingresso da pizzada que consegue te vencer num combate",
@@ -118,9 +125,15 @@ def carregar_cenarios():
                 "aceitar": "Aceitar o combate",
                 "recusar": "Ta com medo?",
                 "brigar": "Não aceitar a aposta e resolver na mão"
-                #brigar print: voce teve que passar um dia no hospital e perdeu o prazo do EP > perde
                 #programa do combate quando aceitar
                 #recusar: voltar pra sala das entidades
+            },
+        },
+        "recusar": {
+            "titulo": "",
+            "descricao": "",
+            "opcoes": {
+                "entidades": "Voltar para a sala das entidades",
             },
         },
         "elevador": {
@@ -132,11 +145,26 @@ def carregar_cenarios():
                 #SE ELA NAO EXISTIR ESCREVER "TENTE OUTRO LUGAR!"
             },
         },
-        "pegar": {
+        "jogar": {
             "titulo": "",
             "descricao": "",
             "opcoes": {
-                "opcao1": "seila",
+                "4 andar": "Voltar para o 4° andar",
+            },
+        },
+        "aceitar": {
+            "titulo": "",
+            "descricao": "O elevador pode te levar para qualquer lugar que voce quiser!",
+            "opcoes": {
+                "inspao": "Voltar para o saguao de entrada do insper",
+                "entidades": "Voltar para a sala das entidades",
+            },
+        },
+        "405": {
+            "titulo": "",
+            "descricao": "",
+            "opcoes": {
+                "inspao": "voltar para o sagua de entrada do insper",
             },
         },
         "titulo": {
@@ -144,7 +172,7 @@ def carregar_cenarios():
             "descricao": "O elevador pode te levar para qualquer lugar que voce quiser!",
             "opcoes": {
                 "opcao1": "descrição",
-                "opcao2": "descircao 2",
+                "opcao2": "descricao 2",
             },
         }
     }
@@ -180,7 +208,6 @@ def main():
     game_over = False
     while not game_over:
         cenario_atual = cenarios[nome_cenario_atual]
-
         print()
         print()
         print()
@@ -190,82 +217,103 @@ def main():
         print (cenario_atual["descricao"])
         print ("O seu inventario é: {0}".format(inventario))
         print()
-
         opcoes = cenario_atual['opcoes']
+
+            
+        if nome_cenario_atual == "cafe":
+            vida_cafe = 100
+            print("Por decidir ser uma pessoa correta e não pular o café da manha, você conseguiu +100 de vida!")
+            
+        if nome_cenario_atual == "livro":
+            book = random.randint(1,3)
+            if book == 1 or 2:
+                inventario.append("livro")
+                print("Você foi esperto e encontrou um livro com anotações que irão te salvar!")
+                print("Novo item adicionado ao seu inventario")
+            else:
+                print("você não encontrou nada!")
+                
+        if nome_cenario_atual == "405":
+            print("Parabéns você encontrou a sala secreta!")
+            seila = input("O que você quer fazer?")
+            print (seila)
+            print("opções: completar o inventario, ganhar, perder")
+            if seila == "completar o inventario":
+                inventario.append("ingresso", "livro", "Computador para programar", "conselhos da barbara")
+            elif seila == "ganhar":
+                print("A vida não é tão facil assim...")
+                game_over = True
+                
+        if nome_cenario_atual == "ajudar":
+            inventario.append("conselhos da barbara")
+            
+        if nome_cenario_atual == "pizzada":
+            if "Ingresso" in inventario:
+                continue
+                print("Você pode entrar")
+                #CODIGO!
+            
+        if nome_cenario_atual == "elevador":
+            lugar = input("Onde você quer ir?")
+            if lugar in cenarios:
+                nome_cenario_atual = lugar
+                
+#apagar o ingresso da lista
+                
+#aparição de monstros - G A L O 
+                
+        if nome_cenario_atual == 'aceitar':
+#ELE NAO TA ACONTECENDO NADA QUANDO ESCOLHEMOS ESSA OPÇÃO
+            vida_veterano = 100
+            vida_aluno = 100 + vida_cafe
+            while vida_veterano or vida_aluno > 0:
+                x = random.randint(1,2)
+                if x == 1:
+                    vida_veterano -= 50
+                else:
+                    vida_aluno -= 50 
+            if vida_aluno > vida_veterano:
+                print("Voce ganhou!")
+                print("Novo item adquirido no inventario")
+                inventario.append("Ingresso")
+            else:
+                print("Voce perdeu")
+                    
+     
+        if nome_cenario_atual == "jogar":
+            x = random.randint(1,12)
+            if x == 1:
+                print ("Parabens! Você conseguiu ficar em 1° lugar e por isso ganhou um prêmio!")
+                print("Novo item adquirido no inventario")
+                inventario.append("Computador para programar")
+            elif x == 12:
+                print ("Você ficou em último, desistiu do EP e foi pra casa chorar")
+                game_over = True
+            else: 
+                print ("bom jogo! que pena que não conseguiu ficar em 1° dessa vez!")
+            
+                    
+
+    
         if len(opcoes) == 0:
             print("Acabaram-se suas opções! Mwo mwo mwooooo...")
             game_over = True
         else:
-
             print ("Opcoes disponiveis:")
             for x, y in opcoes.items():                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             
                 print ("{0}:{1}".format(x, y))
-                #se o lugar for o elevador, não printar as opções
             
             escolha = input("O que você irá escolher?")
- #problema acessar de qualquer lugar
- #criar sala secreta
-           
+        
             if escolha in opcoes:
                 nome_cenario_atual = escolha
-            elif escolha =='elevador':
-                nome_cenario_atual = escolha
-            elif escolha == "pegar":
-                book = random.randint(1,3)
-                if book == 1 or 2:
-                    inventario.append("livro")
-                    nome_cenario_atual = "biblioteca"
-                else:
-                    print("você não encontrou nada!")
-                    nome_cenario_atual = "biblioteca",
-            elif escolha == "deixar":
-                nome_cenario_atual = "biblioteca"
-#apagar o livro do dicionario
-                
-#aparição de monstros - G A L O 
-                
-            elif escolha == 'aceitar':
-#ELE NAO TA ACONTECENDO NADA QUANDO ESCOLHEMOS ESSA OPÇÃO
-                vida_veterano = 100
-                vida_aluno = 100 #se ele ja tiver ganhado vidas durante o jogo, colocar aqui o valor, caso contrario, 0
 
-                while vida_veterano or vida_aluno > 0:
-                    x = random.randint(1,2)
-                    if x == 1:
-                        vida_veterano -= 50
-                    else:
-                        vida_aluno -= 50 
-                if vida_aluno > vida_veterano:
-                    print("Voce ganhou!")
-                    print("Novo item adquirido no inventario")
-                    inventario.append("Ingresso")
-                    nome_cenario_atual = 'entidades'
-                else:
-                    print("Voce perdeu")
-                    nome_cenario_atual = 'entidades'
-                    
-#while limite tentativas de jogo (x3)
-            elif escolha == "jogar":
-                x = random.randint(1,12)
-                if x == 1:
-                    print ("Parabens! Você conseguiu ficar em 1° lugar e por isso ganhou um prêmio!")
-                    print("Novo item adquirido no inventario")
-                    inventario.append("Computador para programar")
-                    nome_cenario_atual = "mario kart"
-                elif x == 12:
-                    print ("Você ficou em último, desistiu do EP e foi pra casa chorar")
-                    game_over = True
-                else: 
-                    print ("bom jogo! que pena que não conseguiu ficar em 1° dessa vez!")
-                    nome_cenario_atual = "mario kart" 
-                    
             else:
                 print("Sua indecisão foi sua ruína!") 
                 game_over = True
 
     print("Você morreu!")
-
-
+    
 # Programa principal.
 if __name__ == "__main__":
     main()
