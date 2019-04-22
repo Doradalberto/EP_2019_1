@@ -144,16 +144,27 @@ def carregar_cenarios():
             "titulo": "Quadrado sobe desce",
             "descricao": "O elevador pode te levar para qualquer lugar que voce quiser!",
             "opcoes": {
+                "4 andar": "x",
+                "405": "descrição",
+                "veterano": "descricao ",
+                "pizzada": "descrição",
+                "mario kart": "descricao ",
+                "entidades": "descrição",
+                "biblioteca": "descricao ",
+                "inspao": "descrição",
+                "professor": "descricao ",
+            },
+        },
                 #lugar = input("Onde você quer ir?")
                 #if lugar == IMPLEMENTAR CODIGO PARA LEVAR PARA A SALA QUE ELE CHAMAR O NOME, 
                 #SE ELA NAO EXISTIR ESCREVER "TENTE OUTRO LUGAR!"
-            },
-        },
+    
         "jogar": {
             "titulo": "",
             "descricao": "",
             "opcoes": {
-                "4 andar": "Voltar para o 4° andar",
+                "4 andar": "x",
+                
             },
         },
         "aceitar": {
@@ -167,7 +178,7 @@ def carregar_cenarios():
             "titulo": "",
             "descricao": "",
             "opcoes": {
-                "inspao": "voltar para o sagua de entrada do insper",
+                "inspao": "voltar para o sagua0 de entrada do insper",
             },
         },
         "titulo": {
@@ -219,9 +230,10 @@ def main():
         print (comprimento1*"-")
         print (cenario_atual["descricao"])
         print ("O seu inventario é: {0}".format(inventario))
-        
-        print()
-        opcoes = cenario_atual["opcoes"]
+        if cenario_atual != 'elevador':
+            
+            print()
+            opcoes = cenario_atual["opcoes"]
         
         
             
@@ -268,6 +280,7 @@ def main():
             lugar = input("Onde você quer ir?")
             if lugar in cenarios:
                 nome_cenario_atual = lugar
+            
                 
                 
 #aparição de monstros - G A L O 
@@ -327,8 +340,7 @@ def main():
             if escolha in opcoes:
                 nome_cenario_atual = escolha
 
-            elif escolha =='elevador':
-                nome_cenario_atual = escolha
+            
             elif escolha == "jogar":
                 x = random.randint(1,12)
                 if x == 1:
