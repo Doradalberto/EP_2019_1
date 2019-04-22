@@ -9,7 +9,7 @@ import random
 inventario = [0]*3
 =======
 inventario = []
-
+vida = 100
 #colocar um jogo num while, para ele poder jogar só 3 vezes, caso o contrario é jubilado :)
 >>>>>>> 2ebac39b2e6e4c434c5ac33c563bb5d00130fbd3
 
@@ -158,9 +158,8 @@ def carregar_cenarios():
         },
         "aceitar": {
             "titulo": "",
-            "descricao": "O elevador pode te levar para qualquer lugar que voce quiser!",
+            "descricao": "",
             "opcoes": {
-                "inspao": "Voltar para o saguao de entrada do insper",
                 "entidades": "Voltar para a sala das entidades",
             },
         },
@@ -220,13 +219,17 @@ def main():
         print (comprimento1*"-")
         print (cenario_atual["descricao"])
         print ("O seu inventario é: {0}".format(inventario))
+        
         print()
-        opcoes = cenario_atual['opcoes']
-
+        opcoes = cenario_atual["opcoes"]
+        
+        
             
         if nome_cenario_atual == "cafe":
-            vida_cafe = 100
+            vida = 200
+            
             print("Por decidir ser uma pessoa correta e não pular o café da manha, você conseguiu +100 de vida!")
+            print()
             
         if nome_cenario_atual == "livro":
             book = random.randint(1,3)
@@ -234,14 +237,17 @@ def main():
                 inventario.append("livro")
                 print("Você foi esperto e encontrou um livro com anotações que irão te salvar!")
                 print("Novo item adicionado ao seu inventario")
+                print()
             else:
                 print("você não encontrou nada!")
+                print()
                 
         if nome_cenario_atual == "405":
             print("Parabéns você encontrou a sala secreta!")
             seila = input("O que você quer fazer?")
             print (seila)
             print("opções: completar o inventario, ganhar, perder")
+            print()
             if seila == "completar o inventario":
                 inventario.append("ingresso", "livro", "Computador para programar", "conselhos da barbara")
             elif seila == "ganhar":
@@ -256,32 +262,34 @@ def main():
                 continue
                 print("Você pode entrar")
                 #CODIGO!
+#apagar o ingresso da lista
             
         if nome_cenario_atual == "elevador":
             lugar = input("Onde você quer ir?")
             if lugar in cenarios:
                 nome_cenario_atual = lugar
                 
-#apagar o ingresso da lista
                 
 #aparição de monstros - G A L O 
                 
         if nome_cenario_atual == 'aceitar':
 #ELE NAO TA ACONTECENDO NADA QUANDO ESCOLHEMOS ESSA OPÇÃO
             vida_veterano = 100
-            vida_aluno = 100 + vida_cafe
+            
+            vida_aluno= vida
             while vida_veterano or vida_aluno > 0:
                 x = random.randint(1,2)
                 if x == 1:
-                    vida_veterano -= 50
-                else:
-                    vida_aluno -= 50 
+                    vida_veterano -= 51
+                    vida_aluno -= 51 
             if vida_aluno > vida_veterano:
                 print("Voce ganhou!")
                 print("Novo item adquirido no inventario")
+                print()
                 inventario.append("Ingresso")
             else:
                 print("Voce perdeu")
+                print()
                     
      
         if nome_cenario_atual == "jogar":
