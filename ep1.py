@@ -6,7 +6,6 @@
 
 import random
 inventario = [0]*3
-inventario[0]= 'chapeu'
 
 def carregar_cenarios():
     cenarios = {
@@ -152,7 +151,7 @@ def main():
                 if x == 1:
                     print ("Parabens! Você conseguiu ficar em 1° lugar e por isso ganhou um prêmio!")
                     print ("Verifique seu inventário")
-                    inventario.append("Computador para programar")
+                    inventario[0]="Computador para programar"
                     nome_cenario_atual = "mario kart"
                 elif x == 12:
                     print ("Você ficou em último, desistiu do EP e foi pra casa chorar")
