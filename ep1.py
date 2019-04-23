@@ -10,9 +10,6 @@ caf=[]
 
 inventario = []
 
-#colocar um jogo num while, para ele poder jogar só 3 vezes, caso o contrario é jubilado :)
-
-
 def carregar_cenarios():
     cenarios = {
         "casa": {
@@ -49,19 +46,16 @@ def carregar_cenarios():
                 "mario kart": "Ir jogar mario kart com a galera",
                 "professor": "Falar com o professor",
                 "pizzada": "Ir para a pizzada comer muito e entrosar",
-                #rever a existencia da pizzada no dicionario
-                    #if ingresso not in inventario
-                    # tirar o pizzada das opcoes
                 "inspao": "Voltar para o saguão de entrada do Insper",
                 "elevador":"pegar o elevador para ir pra onde quiser"
             }
         },
         "professor": {
             "titulo": "O monstro do Python",
-            "descricao": "Voce foi pedir para o professor adiar o EP. "
-                         "O professor revelou que é um monstro disfarçado "
-                         "e devorou sua alma.",
-            "opcoes": {}
+            "descricao": "",
+            "opcoes": {
+                "":""
+                    }
         },
         "biblioteca": {
             "titulo": "Caverna da tranquilidade",
@@ -96,13 +90,11 @@ def carregar_cenarios():
                 "biblioteca": "Ir tentar fazer o EP na biblioteca",
                 "4 andar": "Ir até a sala do professor para conversar com ele",
                 "ajudar": "ajudar colega que está com dificuldades no EP"
-                #so consegue acessar se na lista tiver o ingresso (if opções pizzada...)
-                #se n tiver o ingresso volta 4 andar
             },
         },
         "ajudar": {
             "titulo": "Alma caridosa",
-            "descricao": "Por ajudar seu amigo, você conseguiu +50 de vida!",
+            "descricao": "Por ajudar seu amigo, você conseguiu +50 de vida! Além de conseguir conselhos da barbara que estava lá e viu seu ato de bondade!",
             "opcoes": {
                 "4 andar": "Voltar para o 4° andar",
             },
@@ -129,8 +121,6 @@ def carregar_cenarios():
                 "aceitar": "Aceitar o combate",
                 "recusar": "Ta com medo?",
                 "brigar": "Não aceitar a aposta e resolver na mão"
-                #programa do combate quando aceitar
-                #recusar: voltar pra sala das entidades
             },
         },
         "recusar": {
@@ -144,26 +134,23 @@ def carregar_cenarios():
             "titulo": "Quadrado sobe desce",
             "descricao": "O elevador pode te levar para qualquer lugar que voce quiser!",
             "opcoes": {
-                "4 andar": "x",
-                "405": "descrição",
-                "veterano": "descricao ",
-                "pizzada": "descrição",
-                "mario kart": "descricao ",
-                "entidades": "descrição",
-                "biblioteca": "descricao ",
-                "inspao": "descrição",
-                "professor": "descricao ",
+                "4 andar": "ir para o 4 andar",
+                "405": "ir para a sala 405",
+                "veterano": "ir conversar com o veterano barulhento ",
+                "pizzada": "ir para a pizzada",
+                "mario kart": "ir jogar mario kart",
+                "entidades": "ir para a sala das entidades",
+                "biblioteca": "ir para a biblioteca ",
+                "inspao": "ir para o saguao de entrada do insper",
+                "professor": "ir conversar com o professor",
             },
         },
-                #lugar = input("Onde você quer ir?")
-                #if lugar == IMPLEMENTAR CODIGO PARA LEVAR PARA A SALA QUE ELE CHAMAR O NOME, 
-                #SE ELA NAO EXISTIR ESCREVER "TENTE OUTRO LUGAR!"
     
         "jogar": {
             "titulo": "",
             "descricao": "",
             "opcoes": {
-                "4 andar": "x",
+                "4 andar": "Voltar para o 4 andar",
                 
             },
         },
@@ -178,7 +165,7 @@ def carregar_cenarios():
             "titulo": "",
             "descricao": "",
             "opcoes": {
-                "inspao": "voltar para o sagua0 de entrada do insper",
+                "inspao": "voltar para o saguao de entrada do insper",
             },
         },
         "titulo": {
@@ -256,37 +243,49 @@ def main():
                 
         if nome_cenario_atual == "405":
             print("Parabéns você encontrou a sala secreta!")
+            print("opções: completar o inventario, ganhar")
             seila = input("O que você quer fazer?")
-            print (seila)
-            print("opções: completar o inventario, ganhar, perder")
             print()
             if seila == "completar o inventario":
-                inventario.append("ingresso", "livro", "Computador para programar", "conselhos da barbara")
+                inventario.append("livro")
+                inventario.append("Ingresso")
+                inventario.append("Computador para programar")
+                inventario.append("conselhos da barbara")
+                inventario.append("supervelocidade ao programar")
             elif seila == "ganhar":
                 print("A vida não é tão facil assim...")
                 game_over = True
+                break
                 
         if nome_cenario_atual == "ajudar":
             inventario.append("conselhos da barbara")
+            print("Novo item adicionado ao inventario")
             
-        if nome_cenario_atual == "pizzada":
-            if "Ingresso" in inventario:
-                continue
-                print("Você pode entrar")
-                #CODIGO!
-#apagar o ingresso da lista
+        if "Ingresso" in inventario:
+            if nome_cenario_atual == "pizzada":
+                print("Na pizzada você conheceu uma galera mt gente fina que te ajudou a fazer o EP!")
+                print("por isso você ganhou uma supervelocidade ao programar")
+                print("Novo item adicionado ao inventario")
+                inventario.append("supervelocidade ao programar")
             
         if nome_cenario_atual == "elevador":
             lugar = input("Onde você quer ir?")
             if lugar in cenarios:
                 nome_cenario_atual = lugar
-            
-                
-                
-#aparição de monstros - G A L O 
+        
+        if nome_cenario_atual == "professor":
+            if len(inventario) == 5:
+                print("Parabéns! Você se esforçou muito e conseguiu um adiamento do EP!")
+                print(" ---------- VOCÊ VENCEU! ---------- ")
+                game_over = True
+                break
+            if len(inventario) != 5:
+                print("O professor não aceitou seu pedido de adiamento para o EP!")
+                print(" ---------- VOCÊ PERDEU ---------- ")
+                game_over = True
+                break
                 
         if nome_cenario_atual == 'aceitar':
-#ELE NAO TA ACONTECENDO NADA QUANDO ESCOLHEMOS ESSA OPÇÃO
             vida_veterano = 100
             if 'cc' in caf:
                 vida_aluno =100 + cafe
@@ -312,13 +311,14 @@ def main():
      
         if nome_cenario_atual == "jogar":
             x = random.randint(1,12)
-            if x == 1:
+            if x == 1 or x == 2 or x == 3 or x == 4 or x == 5 or x == 6 :
                 print ("Parabens! Você conseguiu ficar em 1° lugar e por isso ganhou um prêmio!")
                 print("Novo item adquirido no inventario")
                 inventario.append("Computador para programar")
             elif x == 12:
                 print ("Você ficou em último, desistiu do EP e foi pra casa chorar")
                 game_over = True
+                break
             elif x==11:
                 print('voce quase perdeu, cuidado!')
             else: 
@@ -360,7 +360,7 @@ def main():
                 print("Sua indecisão foi sua ruína!") 
                 game_over = True
 
-    print("Você morreu!")
+    print("")
     
 # Programa principal.
 if __name__ == "__main__":
